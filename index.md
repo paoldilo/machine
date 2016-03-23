@@ -207,8 +207,12 @@ accu_list
 ## Generalized Boosted Regression 0.8525064
 ## Combination of the 3           0.9949023
 ```
+
+```r
+outOfSampleError <- sum(pred_rf2 == validation$classe)/length(pred_rf2)
+```
    
-The accuracy of the Random Forest on the out of sample dataset is 99.4902294% that is quite high and reliable and equal to the combination of the 3 models together so I will use the trained random forest as the predicting model.
+The accuracy of the Random Forest o is 99.4902294%  and the out of sample error using cross-validation is 0.9949023% that is quite small and reliable so I will use the trained random forest as the predicting model.
 To get the final classification from the testing dataset I use the best model found so far and I get the classification values.
    
    
