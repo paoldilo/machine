@@ -4,6 +4,7 @@ author: 'Author: Paolo Di Lorenzo'
 output:
   html_document: 
     highlight: pygments
+    keep_md: yes
 ---
 
 # Executive summary
