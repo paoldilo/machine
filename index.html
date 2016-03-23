@@ -284,8 +284,9 @@ accu_list</code></pre></div>
 ## Random Forest with OOB         0.9949023
 ## Generalized Boosted Regression 0.8525064
 ## Combination of the 3           0.9949023</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outOfSampleError &lt;-<span class="st"> </span><span class="kw">sum</span>(pred_rf2 ==<span class="st"> </span>validation$classe)/<span class="kw">length</span>(pred_rf2)</code></pre></div>
-<p>The accuracy of the Random Forest o is 99.4902294% and the out of sample error using cross-validation is 0.9949023% that is quite small and reliable so I will use the trained random forest as the predicting model. To get the final classification from the testing dataset I use the best model found so far and I get the classification values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outOfSampleError &lt;-<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span><span class="kw">sum</span>(pred_rf2 ==<span class="st"> </span>validation$classe)/<span class="kw">length</span>(pred_rf2)) *<span class="st"> </span>
+<span class="st">    </span><span class="dv">100</span></code></pre></div>
+<p>The accuracy of the Random Forest is 99.4902294% and the out of sample error using cross-validation is 0.5097706% that is quite small and reliable so I will use the trained random forest as the predicting model. To get the final classification from the testing dataset I use the best model found so far and I get the classification values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># since the random forest has the best accuracy it will be used for the test</span>
 <span class="co"># prediction</span>
 prediction_test &lt;-<span class="st"> </span><span class="kw">predict</span>(mod_rf2, intest)

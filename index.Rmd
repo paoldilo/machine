@@ -141,10 +141,10 @@ As can be seen from the Accuracy of the confusion matrix of each model, the rand
 accu_list<-as.data.frame(rbind(confusionMatrix(pred_rpart, validation$classe)$overall[1],confusionMatrix(pred_rf2, validation$classe)$overall[1],confusionMatrix(pred_gbm, validation$classe)$overall[1],confusionMatrix(combPred, predDF$classe)$overall[1]))
 rownames(accu_list) <- c("Recursive Partitioning","Random Forest with OOB", "Generalized Boosted Regression","Combination of the 3")
 accu_list
-outOfSampleError <- sum(pred_rf2 == validation$classe)/length(pred_rf2)
+outOfSampleError <-(1- sum(pred_rf2 == validation$classe)/length(pred_rf2))*100
 ```   
    
-The accuracy of the Random Forest o is `r accu_list[2,1]*100`%  and the out of sample error using cross-validation is `r outOfSampleError`% that is quite small and reliable so I will use the trained random forest as the predicting model.
+The accuracy of the Random Forest is `r accu_list[2,1]*100`%  and the out of sample error using cross-validation is `r outOfSampleError`% that is quite small and reliable so I will use the trained random forest as the predicting model.
 To get the final classification from the testing dataset I use the best model found so far and I get the classification values.
    
    
