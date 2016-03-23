@@ -92,10 +92,11 @@ varImpPlot(mod_rf2,type=2,main = "Variables Importance Measure")
 
 #plot the 6 most important variables of the random forest model
 par(mfrow=c(3, 2), xpd=NA)
-par(mar=c(3,2,2,3))
+par(mar=c(3,3,2,3))
 adf <- as.data.frame(mod_rf2$importance)
 names_1=rownames(adf[order(-adf[,7]),])[1:6]
-for (name in names_1) partialPlot(mod_rf2, training, eval(name), main=name)
+par(cex=.8)
+for (name in names_1) partialPlot(mod_rf2, training, eval(name), xlab=name, main=name)
 
 ```
 
